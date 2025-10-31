@@ -9,6 +9,14 @@ if (!isset($_SESSION['UserID'])) {
 }
 
 $storyID = $_POST['StoryID'] ?? 0;
-$conn->query("UPDATE story SET Favourite = Favourite + 1 WHERE StoryID = $storyID");
+$action = $_POST['action'] ?? ''; 
+$userID = $_SESSION['UserID'];
+
+if ($action === 'like') {
+    $conn->query("UPDATE story SET Favourite = Favourite + 1 WHERE StoryID = $storyID");
+} elseif ($action === 'unlike') {
+    $conn->query("UPDATE story SET Favourite = GREATEST(Favourite - 1, 0) WHERE StoryID = $storyID");
+}
+
 echo json_encode(['success' => true]);
 ?>
