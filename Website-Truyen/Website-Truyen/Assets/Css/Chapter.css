@@ -1,0 +1,77 @@
+/* Chapter.css */
+
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Tiêu đề chương */
+h2 {
+    color: #222;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Nội dung chương */
+div.content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    white-space: pre-line; /* giữ xuống dòng */
+    font-size: 18px;
+    line-height: 1.6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Nút điều hướng */
+div.navigation {
+    margin-top: 20px;
+    text-align: center;
+}
+
+div.navigation a {
+    text-decoration: none; /* bỏ gạch chân */
+    color: #007bff;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+div.navigation a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Phân cách */
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    div.content {
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    div.navigation a {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
