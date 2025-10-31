@@ -1,0 +1,130 @@
+/* Home.css */
+
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Form tìm kiếm */
+form {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+form input[type="text"] {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    padding: 8px 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Danh sách truyện - hiển thị nhiều truyện trên 1 dòng */
+.story-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* khoảng cách giữa các truyện */
+    margin-bottom: 20px;
+}
+
+.story-item {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 180px; /* chiều rộng mỗi card */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Hover - nổi lên */
+.story-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Hình ảnh truyện */
+.story-item img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Tên truyện */
+.story-item h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.story-item a {
+    text-decoration: none;
+    color: #333;
+}
+
+.story-item a:hover {
+    color: #007bff;
+}
+
+/* Phân cách các truyện */
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+/* Tiêu đề danh sách truyện mới */
+h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .story-list {
+        justify-content: center;
+    }
+    .story-item {
+        width: 45%; /* 2 truyện trên 1 dòng */
+    }
+}
+
+@media (max-width: 500px) {
+    .story-item {
+        width: 100%; /* 1 truyện / dòng */
+    }
+}
