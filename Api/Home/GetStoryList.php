@@ -12,6 +12,5 @@ $stories = [];
 while ($row = $result->fetch_assoc()) {
     $stories[] = $row;
 }
-
 echo json_encode($stories);
 ?>

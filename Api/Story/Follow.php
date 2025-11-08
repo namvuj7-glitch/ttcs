@@ -1,8 +1,10 @@
 <?php
 session_start();
 include __DIR__ . '/../../Includes/Connects.php';
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 if (!isset($_SESSION['UserID'])) {
     http_response_code(401);
     echo json_encode(['error' => 'Not logged in']);
@@ -10,7 +12,7 @@ if (!isset($_SESSION['UserID'])) {
 }
 
 $storyID = $_POST['StoryID'] ?? 0;
-$action = $_POST['action'] ?? ''; // 'follow' hoặc 'unfollow'
+$action = $_POST['action'] ?? ''; 
 $userID = $_SESSION['UserID'];
 
 if ($action === 'follow') {
