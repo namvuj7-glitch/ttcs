@@ -7,18 +7,18 @@ header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 $data = json_decode(file_get_contents("php://input"), true);
-$storyID = $data['storyID'] ?? 0;
+$chapterID = $data['chapterID'] ?? 0;
 
-if ($storyID > 0) {
-    $sql = "UPDATE story SET view = view + 1 WHERE StoryID = ?";
+if ($chapterID > 0) {
+    $sql = "UPDATE chapter SET view = view + 1 WHERE ChapterID = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $storyID);
+    $stmt->bind_param("i", $chapterID);
     if ($stmt->execute()) {
         echo json_encode(["status" => "success"]);
     } else {
         echo json_encode(["status" => "error", "message" => $stmt->error]);
     }
 } else {
-    echo json_encode(["status" => "error", "message" => "Invalid StoryID"]);
+    echo json_encode(["status" => "error", "message" => "Invalid ChapterID"]);
 }
 ?>

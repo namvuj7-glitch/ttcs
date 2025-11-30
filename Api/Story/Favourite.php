@@ -13,7 +13,7 @@ if ($method === 'GET') {
     $userID = intval($_GET['userID']);
     $storyID = intval($_GET['storyID']);
 
-    $sql = "SELECT * FROM follow WHERE UserID = $userID AND StoryID = $storyID";
+    $sql = "SELECT * FROM favourite WHERE UserID = $userID AND StoryID = $storyID";
     $result = $conn->query($sql);
     echo json_encode(["liked" => $result->num_rows > 0]);
 }
@@ -25,14 +25,18 @@ if ($method === 'POST') {
     $action = $data['action']; // "like" hoặc "unlike"
 
     if ($action === 'like') {
-        $conn->query("INSERT IGNORE INTO follow (UserID, StoryID) VALUES ($userID, $storyID)");
-        $conn->query("UPDATE story SET Follow = Follow + 1 WHERE StoryID = $storyID");
+        // Thêm vào bảng favourite
+        $conn->query("INSERT IGNORE INTO favourite (UserID, StoryID) VALUES ($userID, $storyID)");
+        // Tăng cột Favourite trong story
+        $conn->query("UPDATE story SET Favourite = Favourite + 1 WHERE StoryID = $storyID");
         echo json_encode(["message" => "Liked"]);
     }
 
     if ($action === 'unlike') {
-        $conn->query("DELETE FROM follow WHERE UserID = $userID AND StoryID = $storyID");
-        $conn->query("UPDATE story SET Follow = GREATEST(Follow - 1, 0) WHERE StoryID = $storyID");
+        // Xóa khỏi bảng favourite
+        $conn->query("DELETE FROM favourite WHERE UserID = $userID AND StoryID = $storyID");
+        // Giảm cột Favourite trong story (chặn âm)
+        $conn->query("UPDATE story SET Favourite = GREATEST(Favourite - 1, 0) WHERE StoryID = $storyID");
         echo json_encode(["message" => "Unliked"]);
     }
 }
