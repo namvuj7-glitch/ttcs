@@ -1,7 +1,9 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // Cho phép React gọi API
-header("Content-Type: application/json; charset=UTF-8");
-header("Content-Type: application/json");
+header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
 include __DIR__ . '/../../Includes/Connects.php';
 
 // Lấy top 10 truyện có lượt yêu thích cao nhất
